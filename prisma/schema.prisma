@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DB_URL")
+}
+
+
+// Danh sách người dùng
+model User {
+  id              Int       @id @default(autoincrement())
+  // Tên người dùng
+  name            String?
+  // Email người dùng
+  email           String?
+  // Ngày sinh
+  birthday        DateTime?
+  // Giới tính, true === 'Nam'
+  sex             Int   @default(0)
+  // Mã quốc gia
+  regionCode      String?   @default("+84")
+  // Số điện thoại, dùng cho sign-in
+  phoneNumber     String    @unique()
+  // Salt, chuỗi bất kỳ dùng cho xác thực mật khẩu
+  salt            String    @default("abcdefgh123456")
+  // Password, mật khẩu đã được mã hoá
+  password        String
+  // Địa chỉ cụ thể
+  address         String?   @db.LongText()
+  // Ngày tạo
+  createdAt       DateTime  @default(now())
+  // Ngày cập nhật
+  updatedAt       DateTime? @updatedAt
+  // Ngày xoá
+  deletedAt       DateTime?
+
+  @@map("users")
+}

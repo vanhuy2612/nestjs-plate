@@ -1,0 +1,42 @@
+{
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  },
+  "compilerOptions": {
+    "rootDir": "./",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@root/*": ["./*"],
+      "@configs/*": ["./src/configs/*"],
+      "@decorators/*": ["./src/decorators/*"],
+      "@dtos/*": ["./src/dtos/*"],
+      "@guards/*": ["./src/guards/*"],
+      "@middlewares/*": ["./src/middlewares/*"],
+      "@modules/*": ["./src/modules/*"],
+      "@pipes/*": ["./src/pipes/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@cores/*": ["./src/cores/*"]
+    },
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowJs": true
+  }
+}
