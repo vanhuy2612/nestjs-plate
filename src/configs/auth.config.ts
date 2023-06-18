@@ -1,4 +1,4 @@
-import { Env } from "@shared/env";
+import { Env } from "@src/shared/env";
 
 export const authConfig = {
   JWT_SECRET_KEY: Env.JWT_SECRET_KEY,

@@ -1,13 +1,13 @@
 import { Module } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
-import { PrismaModule } from "@cores/database/master/index.module";
-import { LoggerModule } from "@cores/logger/index.module";
+import { PrismaModule } from "@src/cores/database/master/index.module";
+import { LoggerModule } from "@src/cores/logger/index.module";
 import { ThrottlerModule } from "@nestjs/throttler";
 import { BaseModule } from "./modules/base/base.module";
 import { JwtModule } from "@nestjs/jwt";
-import { Env } from "@shared/env";
-import { THROTTLE_TTL, THROTTLE_LIMIT } from "@shared/common";
+import { Env } from "@src/shared/env";
+import { THROTTLE_TTL, THROTTLE_LIMIT } from "@src/shared/common";
 
 @Module({
   imports: [

@@ -1,7 +1,7 @@
 "use strict";
 
-import Server from "@cores/server";
-import { ClusterService } from "@cores/cluster";
+import Server from "@src/cores/server";
+import { ClusterService } from "@src/cores/cluster";
 
 (async function start() {
   // this.logger.log(ex_util);

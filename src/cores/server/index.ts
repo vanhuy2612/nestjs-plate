@@ -1,10 +1,10 @@
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "@root/src/app.module";
-import { CustomExceptionFilter } from "@cores/exception/CustomExceptionFilter";
+import { CustomExceptionFilter } from "@src/cores/exception/CustomExceptionFilter";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
-import { LoggerService } from "@cores/logger/index.service";
+import { LoggerService } from "@src/cores/logger/index.service";
 import { ValidationPipe } from "@nestjs/common";
-import { Env } from "@shared/env";
+import { Env } from "@src/shared/env";
 
 class Server {
   async start() {
@@ -19,8 +19,8 @@ class Server {
     app.useGlobalPipes(new ValidationPipe());
     app.setGlobalPrefix("/api/v1");
     const config = new DocumentBuilder()
-      .setTitle("Green Lab List APIs")
-      .setDescription("Green Lab List APIs")
+      .setTitle("Project APIs")
+      .setDescription("Project APIs")
       .setVersion("1.0")
       .addTag("API")
       .addBearerAuth()

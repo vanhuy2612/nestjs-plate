@@ -1,7 +1,14 @@
 import { HttpStatus } from "@nestjs/common";
 import { ApiProperty } from "@nestjs/swagger";
-import { ErrorMessageKey } from "@cores/exception/lang";
+import { ErrorMessageKey } from "@src/cores/exception/lang";
 
+export class GeneralResponse<TData> {
+  @ApiProperty()
+  status: HttpStatus;
+
+  @ApiProperty()
+  data: TData;
+}
 export class PaginatedResponse<TData> {
   @ApiProperty()
   status: HttpStatus;

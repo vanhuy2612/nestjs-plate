@@ -1,6 +1,6 @@
 import { Injectable, NestMiddleware } from "@nestjs/common";
-import { PrismaService } from "@cores/database/master/index.service";
-import { LoggerService } from "@cores/logger/index.service";
+import { PrismaService } from "@src/cores/database/master/index.service";
+import { LoggerService } from "@src/cores/logger/index.service";
 import { JwtService } from "@nestjs/jwt";
 
 @Injectable()

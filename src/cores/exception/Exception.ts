@@ -4,6 +4,7 @@ import { ErrorMessageKey, ErrorMessageT } from "./lang";
 
 export class Exception {
   static async handle(req: any, e: Error | APIException | unknown | any) {
+    console.log(e);
     if (!(e instanceof APIException)) {
       e = new APIException(
         HttpStatus.INTERNAL_SERVER_ERROR,

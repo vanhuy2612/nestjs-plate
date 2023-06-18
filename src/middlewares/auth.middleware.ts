@@ -1,8 +1,8 @@
 import { HttpStatus, Injectable } from "@nestjs/common";
 import { BaseMiddleware } from "./base.middleware";
-import { Env } from "@shared/env";
-import { APIException } from "@cores/exception/APIException";
-import { ErrorMessageKey } from "@cores/exception/lang";
+import { Env } from "@src/shared/env";
+import { APIException } from "@src/cores/exception/APIException";
+import { ErrorMessageKey } from "@src/cores/exception/lang";
 
 @Injectable()
 export class AuthMiddleware extends BaseMiddleware {

@@ -1,4 +1,4 @@
-import { authConfig } from "@configs/auth.config";
+import { authConfig } from "@src/configs/auth.config";
 import * as bcrypt from "bcrypt";
 import * as moment from "moment";
 
