@@ -1,10 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 
-export class CommonDTO {
-  id: number;
-}
-
-export class UserDTO {
+export class CommonRequest {
   @ApiProperty()
   id: number;
 }

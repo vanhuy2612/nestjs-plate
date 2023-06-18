@@ -5,7 +5,11 @@ import {
   ApiOkResponse,
   getSchemaPath,
 } from "@nestjs/swagger";
-import { ExceptionResponse, GeneralResponse, PaginatedResponse } from "@src/dtos/responses";
+import {
+  ExceptionResponse,
+  GeneralResponse,
+  PaginatedResponse,
+} from "@src/dtos/responses";
 
 export const ApiPaginatedResponse = <TModel extends Type<any>>(
   model: TModel
@@ -44,7 +48,8 @@ export const CustomApiOKResponse = <TModel extends Type<any>>(
           {
             properties: {
               data: {
-                $ref: getSchemaPath(model)              },
+                $ref: getSchemaPath(model),
+              },
             },
           },
         ],

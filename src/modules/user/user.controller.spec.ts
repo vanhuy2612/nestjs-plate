@@ -17,9 +17,9 @@ describe("UserController", () => {
   });
 
   describe("root", () => {
-    it('should return "Hello World!"',async () => {
-        const result = await userController.index({}, {}); 
-        console.log(result);
+    it('should return "Hello World!"', async () => {
+      const result = await userController.index({}, {});
+      console.log(result);
       expect(result).toBe("Hello World!");
     });
   });
