@@ -9,7 +9,7 @@ export class Exception {
     if (!this.logger) {
       console.log("Create instance...");
       this.logger = new LoggerService();
-    } 
+    }
     return this.logger;
   }
   static async handle(req: any, e: Error | APIException | unknown | any) {

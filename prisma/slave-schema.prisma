@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+  output = "../node_modules/@prisma/slave"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DB_SLAVE_URL")
+}
+
+model Stock {
+    id   String @id @default(auto()) @map("_id") @db.ObjectId
+    code String
+
+    @@map("stocks")
+}
+
+model Category {
+    id   String @id @default(auto()) @map("_id") @db.ObjectId
+    name String
+
+    @@map("categories")
+}

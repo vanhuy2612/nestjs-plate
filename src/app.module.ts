@@ -8,6 +8,7 @@ import { BaseModule } from "./modules/base/base.module";
 import { JwtModule } from "@nestjs/jwt";
 import { Env } from "@src/shared/env";
 import { THROTTLE_TTL, THROTTLE_LIMIT } from "@src/shared/common";
+import { SlavePrismaModule } from "@src/cores/database/slave/index.module";
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { THROTTLE_TTL, THROTTLE_LIMIT } from "@src/shared/common";
     }),
     BaseModule,
     PrismaModule,
+    SlavePrismaModule,
     LoggerModule,
     JwtModule.register({
       secret: Env.JWT_SECRET_KEY,

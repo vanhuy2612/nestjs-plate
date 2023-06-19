@@ -1,6 +1,8 @@
 import { INestApplication, Injectable, OnModuleInit } from "@nestjs/common";
-import { Prisma, PrismaClient } from "@prisma/master";
+import { Prisma, PrismaClient } from "@prisma/slave";
 import { URLSearchParams } from "url";
+import { exec } from "child_process";
+import { cwd } from "process";
 
 type DBConfig = {
   DB_TYPE: string;
@@ -17,7 +19,7 @@ type DBConfig = {
     | undefined;
 };
 @Injectable()
-export class PrismaService extends PrismaClient implements OnModuleInit {
+export class SlavePrismaService extends PrismaClient implements OnModuleInit {
   async onModuleInit() {
     try {
       await this.$connect();

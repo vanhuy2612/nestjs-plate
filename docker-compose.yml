@@ -1,17 +1,29 @@
 version: '3.7'
 services: 
-    pg:
-        image: mysql
-        container_name: 'db_green_lab'
+    mongo:
+        image: mongo
         restart: always
-        ports: 
-            - "3306:3306"
-        # Volumes : find folder mounts by : docker inspect <container name> -> object Mounts: [{destination: <folder to mounts>}, {}] 
-        volumes: 
-            - ./.docker/data:/var/lib/mysql
-        environment: 
-            MYSQL_DATABASE: 'green_lab'
-            MYSQL_ROOT_PASSWORD: '123456'
-            MYSQL_USER: 'admin' 
-            MYSQL_PASSWORD: '123456'
-        command: --default-authentication-plugin=mysql_native_password
+        ports:
+            - 27017:27017
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: 123456
+            MONGO_INITDB_DATABASE: iis_db
+
+    mongo-express:
+        image: mongo-express
+        restart: always
+        ports:
+            - 8081:8081
+        environment:
+            ME_CONFIG_MONGODB_ADMINUSERNAME: root
+            ME_CONFIG_MONGODB_ADMINPASSWORD: 123456
+            ME_CONFIG_MONGODB_URL: mongodb://root:123456@mongo:27017/
+            MONGO_INITDB_DATABASE: iis_db
+    
+    redis:
+        image: redis:7.0
+        container_name: 'rd'
+        restart: always
+        ports:
+            - "6379:6379"

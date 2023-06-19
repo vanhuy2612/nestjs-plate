@@ -1,10 +1,14 @@
 import { Injectable } from "@nestjs/common";
+import { SlavePrismaService } from "@root/src/cores/database/slave/index.service";
 import { PrismaService } from "@src/cores/database/master/index.service";
 import { LoggerService } from "@src/cores/logger/index.service";
 @Injectable()
 export class BaseService {
   public model: any;
-  constructor(readonly prisma: PrismaService, readonly logger: LoggerService) {}
+  constructor(
+    readonly prisma: PrismaService | SlavePrismaService,
+    readonly logger: LoggerService
+  ) {}
 
   async index() {
     return await this.model.findMany({});
