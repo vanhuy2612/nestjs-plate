@@ -5,12 +5,14 @@ import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import { LoggerService } from "@src/cores/logger/index.service";
 import { ValidationPipe } from "@nestjs/common";
 import { Env } from "@src/shared/env";
+import { Adapter } from "./adapter";
 
 class Server {
   async start() {
     const logger = new LoggerService();
     const port = Env.PORT;
     const app = await NestFactory.create(AppModule);
+    Adapter.assembly(app);
     app.enableCors({
       allowedHeaders: "*",
       origin: "*",
@@ -18,15 +20,6 @@ class Server {
     app.useGlobalFilters(new CustomExceptionFilter());
     app.useGlobalPipes(new ValidationPipe());
     app.setGlobalPrefix("/api/v1");
-    const config = new DocumentBuilder()
-      .setTitle("Project APIs")
-      .setDescription("Project APIs")
-      .setVersion("1.0")
-      .addTag("API")
-      .addBearerAuth()
-      .build();
-    const document = SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup("/docs", app, document);
     app.listen(port);
     logger.log("Server is running on port :", port);
   }

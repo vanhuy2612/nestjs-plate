@@ -9,6 +9,8 @@ import { JwtModule } from "@nestjs/jwt";
 import { Env } from "@src/shared/env";
 import { THROTTLE_TTL, THROTTLE_LIMIT } from "@src/shared/common";
 import { SlavePrismaModule } from "@src/cores/database/slave/index.module";
+import { AdapterCacheModule } from "@src/cores/cache/index.module";
+import { AdapterSwaggerModule } from "@src/cores/swagger/swagger.module";
 
 @Module({
   imports: [
@@ -24,6 +26,8 @@ import { SlavePrismaModule } from "@src/cores/database/slave/index.module";
       secret: Env.JWT_SECRET_KEY,
       signOptions: { expiresIn: "120s" },
     }),
+    AdapterCacheModule,
+    AdapterSwaggerModule,
   ],
   controllers: [AppController],
   providers: [AppService],
